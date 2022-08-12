@@ -94,6 +94,69 @@ void input()
     int  n,m,c=0,l,mx=-1e9;
     int sum=0;
 
+    string a,b;
+    cin>>a>>b;
+    vector<int>v[10];
+    v[2]= {1,2,4,8,7,5};
+    v[4]= {1,4,7};
+    v[5]= {1,5,7,8,4,2};
+    v[7]= {1,7,4};
+
+    for(int i=0; i<a.size(); i++)
+    {
+        sum+=a[i]-'0';
+    }
+    n=sum;
+    while(sum>=10)
+    {
+        n=sum;
+        sum=0;
+        while(n)
+        {
+            sum+=(n%10);
+            n/=10;
+        }
+        n=sum;
+    }
+
+
+
+    cout<<"Case "<<++cs<<": ";
+    if( (b.size()==1 and b[0]=='0'))cout<<"1"<<endl;
+    else  if(n==0)
+    {
+        cout<<"0"<<endl;
+    }
+    else if(n==2 or n==5)
+    {
+        l=divide(b,6);
+        if(n==2)cout<<v[2][l]<<endl;
+        else cout<<v[5][l]<<endl;
+    }
+    else if(n==3 or n==6)
+    {
+        if(b.size()==1 and b[0]=='1')cout<<n<<endl;
+        else cout<<"9"<<endl;
+
+    }
+    else if(n==4 or n==7)
+    {
+        l=divide(b,3);
+        if(n==4)cout<<v[4][l]<<endl;
+        else cout<<v[7][l]<<endl;
+    }
+    else if(n==8)
+    {
+        l=b[b.size()-1]%2;
+        if(l==0)
+        {
+            cout<<"1"<<endl;
+        }
+        else cout<<"8"<<endl;
+    }
+    else cout<<n<<endl;
+
+
 
 
 
